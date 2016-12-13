@@ -1,0 +1,111 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+}
+
+h1 {
+    color: #ccc;
+    font-size: 4em;
+}
+
+h2 {
+    font-size: 4em;
+    color: #EEE;
+    font-weight: 500;
+}
+
+figure {
+    margin: auto;
+}
+
+.content article {
+    padding: 100px 0;
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+}
+
+nav {
+    margin-top: 10px;
+    position: fixed;
+    float: right;
+}
+
+nav a {
+    display: inline-block;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 1);
+    /*text-transform: uppercase;*/
+}
+
+nav a:hover {
+    color: rgba(210, 210, 210, 1);
+    /*background-color: rgba(180, 180, 180, 0.2);*/
+}
+
+
+/* Parallax */
+
+.headerBG {
+    height: 600px;
+    position: relative;
+    background-image: url("../images/metalBG.png");
+    background-size: cover;
+    background-position: top center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.logo {
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    margin-top: -70px;
+    background-image: url("../images/min-boldLogo.png");
+    background-color: purple;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.minLogo {
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    margin-top: -150px;
+    /*background-color: black;*/
+}
+
+.foreground {
+    width: 700px;
+    height: 700px;
+    /*background-color: rgba(100, 25, 200, 0.2);*/
+    background-image: url("../images/beetle.png");
+    background-repeat: no-repeat;
+    background-size: auto 500px;
+    background-position: right bottom;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: -60px;
+}
+
+.backItem {
+    width: 960px;
+    height: 298px;
+    background-image: url("../images/back-bird.png");
+    background-repeat: no-repeat;
+    background-position: top left;
+    position: absolute;
+    left: 50%;
+    margin-left: -480px;
+}
