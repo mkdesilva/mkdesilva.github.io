@@ -1,7 +1,6 @@
 $(window).scroll(function() {
 
     var scrollDist = $(this).scrollTop();
-
     $('.minLogo').css({
         'transform': 'translate(0px, ' + scrollDist / 2 + '%)'
     });
@@ -14,7 +13,7 @@ $(window).scroll(function() {
         'transform': 'translate(0px, -' + scrollDist / 50 + '%)'
     });
 
-    if (scrollDist > 569) || (scrollDist < 0) {
+    if (scrollDist > 569 || scrollDist < 0) {
         $('nav a').css('color', 'black');
         $('nav a:hover').css('color', 'purple');
     } else {
