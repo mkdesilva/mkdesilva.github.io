@@ -92,12 +92,10 @@ nav a:hover {
     background-image: url("../images/beetle.png");
     background-repeat: no-repeat;
     background-position: right bottom;
-    background-size: cover;
-position: absolute;
+    position: absolute;
     right: 0;
     bottom: 0;
     margin-bottom: -50px;
-    /*background-color: purple;*/
 }
 
 .backItem {
