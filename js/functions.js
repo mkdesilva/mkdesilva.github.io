@@ -1,23 +1,15 @@
 $(window).scroll(function() {
 
     var scrollDist = $(this).scrollTop();
+
+    console.log(scrollDist);
     $('.minLogo').css({
-        'transform': 'translate(0px, ' + scrollDist / 2 + '%)'
+        'transform': 'translate(0px, ' + scrollDist / 1.4 + '%)'
     });
-
-    $('.back-bird').css({
-        'transform': 'translate(0px, ' + scrollDist / 4 + '%)'
-    });
-
-    $('.fore-bird').css({
-        'transform': 'translate(0px, -' + scrollDist / 50 + '%)'
-    });
-
-    if (scrollDist > 569 || scrollDist < 0) {
-        $('nav a').css('color', 'black');
-        $('nav a:hover').css('color', 'purple');
+    if (scrollDist > 400) {
+        $('nav').css('background-color', 'rgba(0, 0, 0, 0.3)');
     } else {
-        $('nav a').css('color', 'white');
+        $('nav').css('background-color', 'rgba(0, 0, 0, 0)');
 
     }
 });
