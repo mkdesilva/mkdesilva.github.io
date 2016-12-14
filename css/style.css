@@ -95,7 +95,7 @@ li a:hover {
 .headerBG {
     height: 100vh;
     position: relative;
-    background-image: url("../images/mountainFull.jpg");
+    background-image: url("../images/mountainOptimised.jpg");
     background-size: cover;
     background-position: top center;
     background-attachment: fixed;
