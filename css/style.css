@@ -29,9 +29,17 @@ body {
     font-size: 1.5em;
 }
 
+p {
+    color: #ecf0f1;
+}
+
 h1 {
-    color: #e74c3c;
-    font-size: 3em;
+    color: #ecf0f1;
+    font-size: 2em;
+}
+
+hr {
+    width: 80%;
 }
 
 figure {
@@ -59,9 +67,8 @@ img {
     padding: 20px;
     font-size: 18px;
     transition: all ease .5s;
-    float:left;
+    float: left;
 }
-
 
 .nav {
     list-style: none;
@@ -71,29 +78,55 @@ img {
     padding: 20px 0 20px 0;
     width: 100%;
     float: right;
-
 }
 
 .nav > li {
-  display: inline-block;
-  padding: 0 25px 0 25px;
+    display: inline-block;
+    padding: 0 25px 0 25px;
 }
 
-.nav > li >  a {
+.nav > li > a {
     margin-left: 20px;
     text-decoration: none;
-    font-weight: 400;
+    font-weight: 600;
     color: #2c3e50;
     font-size: 1.2em;
     /*text-transform: uppercase;*/
 }
+
 .nav > li > a:hover {
     color: #6988a6;
 }
 
 .content {
+    margin: 5rem auto;
+    margin-top: 0;
+    width: 100vw;
+}
+
+#aboutSection {
+    padding: 5rem auto;
+    background-image: url("../images/cafe.jpg");
+    margin-bottom: 0;
+}
+
+#educationSection {
+    margin-top: 0;
+    background-image: url("../images/orange.jpg");
+}
+
+#aboutSection,
+#educationSection,
+#portfolioSection,
+#contactSection {
     text-align: center;
-    padding: 40px;
+}
+
+#aboutSection p,
+#educationSection p,
+#portfolioSection p,
+#contactSection p {
+    margin: 2rem 7rem;
 }
 
 
@@ -122,10 +155,19 @@ img {
     /*background-color: black;*/
 }
 
-.introLogo {
-    font-size: 3em;
+.heroText {
+    font-size: 3rem;
+    line-height: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 250;
     color: #2c3e50;
-    font-weight: 500;
+}
+
+.lightDescription {
+    font-size: 2.22rem;
+    line-height: 2.2rem;
+    margin-bottom: 1.75rem;
+    font-weight: 300;
 }
 
 #footer {
