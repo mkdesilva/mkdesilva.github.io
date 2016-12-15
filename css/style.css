@@ -21,12 +21,19 @@ Slightly Darker Blue
     src: url("../fonts/covesLight.otf");
 }
 
+td {
+    height: 50px;
+    width: 50px;
+    text-align: center;
+}
+
 body {
     height: 100%;
     font-family: coves, sans-serif;
     margin: 0;
-    background-color: #ecf0f1;
+    background-color: #2c3e50;
     font-size: 1.5em;
+    color: #ecf0f1;
 }
 
 p {
@@ -57,11 +64,6 @@ img {
     max-width: 100%;
 }
 
-#navBar {
-    position: fixed;
-    width: 100%;
-}
-
 .logo {
     color: #fff;
     padding: 20px;
@@ -70,32 +72,72 @@ img {
     float: left;
 }
 
-.nav {
-    list-style: none;
-    /*background-color: rgba(255,  20, 20, 0.5);*/
+
+/* Navigation Bar */
+
+#navBar {
+    position: fixed;
+    width: 100%;
+}
+
+nav ul {
+    overflow: hidden;
+    color: #2c3e50;
+    padding: 0;
     text-align: center;
     margin: 0;
-    padding: 20px 0 20px 0;
-    width: 100%;
-    float: right;
+    -webkit-transition: max-height 0.4s;
+    -ms-transition: max-height 0.4s;
+    -moz-transition: max-height 0.4s;
+    -o-transition: max-height 0.4s;
+    transition: max-height 0.4s;
 }
 
-.nav > li {
+nav ul li {
     display: inline-block;
-    padding: 0 25px 0 25px;
+    padding: 25px;
 }
 
-.nav > li > a {
-    margin-left: 20px;
+nav ul li a {
+    font-weight: 300;
     text-decoration: none;
-    font-weight: 600;
-    color: #2c3e50;
-    font-size: 1.2em;
-    /*text-transform: uppercase;*/
+    color: inherit;
 }
 
-.nav > li > a:hover {
-    color: #6988a6;
+nav ul li:hover {
+    color: #547CCD;
+}
+
+.handle {
+    width: 100%;
+    background: ;
+    text-align: left;
+    box-sizing: border-box;
+    padding: 15px 30px;
+    color: #2c3e50;
+    cursor: pointer;
+    display: none;
+}
+
+@media screen and (max-width: 650px) {
+    nav ul {
+        max-height: 0;
+    }
+    .showing {
+        max-height: 20em;
+    }
+    nav ul li {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 15px 30px;
+        text-align: left;
+    }
+    .handle {
+        display: block;
+    }
+    .transparentBG {
+        background-color: rgba(180, 0, 130, 0.8);
+    }
 }
 
 .content {
@@ -108,17 +150,40 @@ img {
     padding: 5rem auto;
     background-image: url("../images/cafe.jpg");
     margin-bottom: 0;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #educationSection {
-    margin-top: 0;
     background-image: url("../images/orange.jpg");
+}
+
+#portfolioSection {
+    background-image: url("../images/bus.jpg");
+}
+
+#contactSection {
+    background-image: url("../images/spaceDarken.jpg");
 }
 
 #aboutSection,
 #educationSection,
 #portfolioSection,
 #contactSection {
+    background-size: cover;
+    background-position: top center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
     text-align: center;
 }
 
@@ -127,6 +192,10 @@ img {
 #portfolioSection p,
 #contactSection p {
     margin: 2rem 7rem;
+}
+
+.transparentBG {
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 
@@ -168,10 +237,15 @@ img {
     line-height: 2.2rem;
     margin-bottom: 1.75rem;
     font-weight: 300;
+    color: #2c3e50;
 }
 
 #footer {
+    color: #ecf0f1;
     width: 100%;
     height: 100px;
     background-color: #2c3e50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

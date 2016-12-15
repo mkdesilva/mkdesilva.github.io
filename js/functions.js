@@ -1,30 +1,39 @@
-$(document).ready(function() {
-    setBindings();
-});
-
-function setBindings() {
-    $(".nav li a").click(function(e) {
+$(function() {
+    /* Animate to new position */
+    $("nav ul li").click(function(e) {
         e.preventDefault();
-        var sectionID = e.currentTarget.id + "Section";
-        var newPosition = $("#" + sectionID).offset().top - 50;
+
+        var childID = $(this).children("a").attr("href");
+        var newPosition = $(childID).offset().top - 50;
         $("html body").animate({
             scrollTop: newPosition
         }, 600)
+
+        $("nav ul").removeClass("showing");
     });
-}
 
-$(window).scroll(function() {
-
-    var scrollDist = $(this).scrollTop();
-
-    console.log(scrollDist);
-    $('.minLogo').css({
-        'transform': 'translate(0px, ' + scrollDist / 1.4 + '%)'
+    /* Show menu for mobile devices */
+    $('.handle').on('click', function() {
+        $('nav ul').toggleClass('showing');
     });
-    if (scrollDist > 400) {
-        $('nav').css('background-color', 'rgba(0, 0, 0, 0.3)');
-    } else {
-        $('nav').css('background-color', 'rgba(0, 0, 0, 0)');
 
-    }
+    /* Make nav bar have a background + animate minLogo */
+    $(window).scroll(function() {
+
+        var scrollDist = $(this).scrollTop();
+
+        $('.minLogo').css({
+            'transform': 'translate(0px, ' + scrollDist / 1.5 + '%)'
+        });
+
+        if (scrollDist > 100) {
+            // console.log('Activated');
+            $('#navBar').addClass("transparentBG");
+        } else {
+            // console.log('Decative');
+            $('#navBar').removeClass("transparentBG");
+
+        }
+    });
+
 });
