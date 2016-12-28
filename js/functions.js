@@ -14,7 +14,22 @@ $(function() {
 
     /* Show menu for mobile devices */
     $('.handle').on('click', function() {
+        var currentHeight = $('nav ul').height();
+
+
         $('nav ul').toggleClass('showing');
+
+        if (currentHeight == 0) {
+            $('#navBar').addClass("transparentBG");
+
+        } else {
+            if ($(window).scrollTop() < 100) {
+                $('#navBar').removeClass("transparentBG");
+
+            }
+
+        }
+
     });
 
     /* Make nav bar have a background + animate minLogo */
