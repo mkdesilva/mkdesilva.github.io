@@ -146,7 +146,15 @@ nav ul li:hover {
     margin-top: 0;
     width: 100vw;
 }
+.flatLink {
+	font-weight: 300;
+    text-decoration: none;
+	color: inherit;
+}
 
+.flatLink:hover {
+	color: #547CCD;
+}
 #aboutSection {
     padding: 5rem auto;
     background-image: url("../images/cafe.jpg");
