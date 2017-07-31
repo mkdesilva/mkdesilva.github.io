@@ -16,20 +16,22 @@ Slightly Darker Blue
 #2980b9
 */
 
-@font-face {
-    font-family: coves;
-    src: url("../fonts/covesLight.otf");
+font-face {
+    /*font-family: coves;
+    src: url("../fonts/covesLight.otf");*/
+    font-family: 'Raleway', sans-serif;
 }
 
 td {
     height: 50px;
     width: 50px;
     text-align: center;
+    padding: 8px;
 }
 
 body {
+    font-family: 'Raleway', sans-serif;
     height: 100%;
-    font-family: coves, sans-serif;
     margin: 0;
     background-color: #2c3e50;
     font-size: 1.5em;
@@ -146,6 +148,13 @@ nav ul li:hover {
     margin-top: 0;
     width: 100vw;
 }
+
+.flatText {
+    font-weight: 300;
+    text-decoration: none;
+    color: inherit;
+}
+
 .flatLink {
 	font-weight: 300;
     text-decoration: none;
@@ -169,7 +178,7 @@ nav ul li:hover {
 }
 
 #educationSection {
-    background-image: url("../images/orange.jpg");
+    background-image: url("../images/railway.jpg");
 }
 
 #portfolioSection {
@@ -177,7 +186,7 @@ nav ul li:hover {
 }
 
 #contactSection {
-    background-image: url("../images/spaceDarken.jpg");
+    background-image: url("../images/space.jpg");
 }
 
 #aboutSection,
@@ -213,7 +222,7 @@ nav ul li:hover {
 .headerBG {
     height: 100vh;
     position: relative;
-    background-image: url("../images/mountainOptimised.jpg");
+    background-image: url("../images/mountain.jpg");
     background-size: cover;
     background-position: top center;
     background-attachment: fixed;
@@ -257,4 +266,11 @@ nav ul li:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.github:hover img {
+    content:url('../images/github-icon-blue.png');
+}
+.github:hover .flatText {
+    color:#547CCD;
 }
