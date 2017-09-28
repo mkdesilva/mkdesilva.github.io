@@ -1,14 +1,5 @@
 /* 
 M. K. DE SILVA
-
-point of reference: 
-http://ninav22.wixsite.com/naynaywannasay
-
-// Colour palette 
-
-Nina's colour
-#ddb8c5k
-
 */
 
 font-face {
@@ -16,9 +7,7 @@ font-face {
 }
 
 body {
-  /*font-family: 'Raleway', sans-serif; /* SUPER CLEAN */
   font-family: 'Bellefair', serif;
-  /*font-family: 'Poppins', sans-serif;*/
   background-color:#fff9f2; 
   color:rgb(0, 0, 0);
   padding: 40px;
@@ -70,7 +59,6 @@ hr:after {
   font-size: 1.8em;
   font-weight: 400;
   color: #F19FC0;
-  /* font-family: 'Shadows Into Light', cursive; */
   font-family: 'Indie Flower', cursive;
 }
 
@@ -171,8 +159,6 @@ hr:after {
   .side-nav a {font-size: 18px;}
 }
 /* END OF NAVIGATION BAR */
-
-/* TESTING */
 
 .row {
   display: flex;
