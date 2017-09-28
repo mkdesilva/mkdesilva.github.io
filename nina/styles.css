@@ -37,6 +37,7 @@ hr {
   border-top: 4px double #F19FC0;
   text-align: center;
 }
+
 hr:after {
   content: '\2665';
   display: inline-block;
@@ -48,7 +49,6 @@ hr:after {
   font-size: 18px;
 }
 
-
 #border {
   padding: 0px 60px;
 }
@@ -58,6 +58,7 @@ hr:after {
   border: 3px solid #F19FC0;
   padding-bottom: 15px;
 }
+
 .hero-text {
   text-align: center;
   font-size:6em;
@@ -73,9 +74,37 @@ hr:after {
   font-family: 'Indie Flower', cursive;
 }
 
+.mobile {
+  display: none;
+}
+
+@media only screen and (max-device-width: 480px) {
+  #hero {
+    border: none;
+  }
+  body {
+    padding: 20px;  
+  }
+  .hero-text {
+    font-size: 4em;
+  }
+
+  .mini-hero {
+    font-size: 1em; 
+  }
+
+  .desktop {
+    display:none;
+  }
+
+  .mobile {
+    display: block;
+  }
+}
+
 .section-header {
   font-size:4.5em;
-  font-weight: 700;
+  font-weight: 400;
   font-family: 'Miss Fajardose', cursive;
   color: #F19FC0;
 
@@ -144,29 +173,7 @@ hr:after {
 /* END OF NAVIGATION BAR */
 
 /* TESTING */
-/*
-@media all and (min-width: 960px) {
-  body{
-    font-size: 20px;
-  }
-}
 
-@media all and (max-width: 959px) and (min-width: 600px) {
-  body{
-    font-size: 2vw;
-  }
-
-  img {
-    height: 20px;
-  }
-}
-
-@media all and (max-width: 599px) and (min-width: 50px) {
-  body{
-    font-size: 3vw;
-  }
-}
-*/
 .row {
   display: flex;
   justify-content: center;
@@ -202,4 +209,3 @@ hr:after {
 .fancy-link:hover {
   color: #b21e9e;
 }
-
