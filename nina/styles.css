@@ -1,0 +1,205 @@
+/* 
+M. K. DE SILVA
+
+point of reference: 
+http://ninav22.wixsite.com/naynaywannasay
+
+// Colour palette 
+
+Nina's colour
+#ddb8c5k
+
+*/
+
+font-face {
+  font-family: 'Raleway', sans-serif;
+}
+
+body {
+  /*font-family: 'Raleway', sans-serif; /* SUPER CLEAN */
+  font-family: 'Bellefair', serif;
+  /*font-family: 'Poppins', sans-serif;*/
+  background-color:#fff9f2; 
+  color:rgb(0, 0, 0);
+  padding: 40px;
+  margin: 10px;
+  text-align: justify;
+  transition: background-color .5s;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+/* Styling the hr line separator */
+hr {
+  border: 0;
+  border-top: 4px double #F19FC0;
+  text-align: center;
+}
+hr:after {
+  content: '\2665';
+  display: inline-block;
+  position: relative;
+  top: -15px;
+  padding: 0 10px;
+  background: #fff9f2; 
+  color: #F19FC0;
+  font-size: 18px;
+}
+
+
+#border {
+  padding: 0px 60px;
+}
+
+#hero {
+  text-align: center;
+  border: 3px solid #F19FC0;
+  padding-bottom: 15px;
+}
+.hero-text {
+  text-align: center;
+  font-size:6em;
+  font-family: 'Miss Fajardose', cursive; /* fancy font */
+  color: #F19FC0;
+}
+
+.mini-hero {
+  font-size: 1.8em;
+  font-weight: 400;
+  color: #F19FC0;
+  /* font-family: 'Shadows Into Light', cursive; */
+  font-family: 'Indie Flower', cursive;
+}
+
+.section-header {
+  font-size:4.5em;
+  font-weight: 700;
+  font-family: 'Miss Fajardose', cursive;
+  color: #F19FC0;
+
+}
+.section-content {
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+}
+
+.section-content img {
+  display: block;
+  vertical-align: middle;
+}
+
+/* Side Navigation Bar */
+
+.side-nav {
+  height: 100%;
+  width: 0; /* changes with javascript */
+  position:fixed;
+  z-index: 1; /* Stays on top */
+  top: 0;
+  left: 0;
+  background-color: #ddb8c5;
+  overflow-x: hidden; /* Disables horizontal scroll */
+  transition: 0.5s; /* 0.5s transition effect to slide */
+  padding-top: 60px;  
+}
+
+.side-nav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 1.8em;
+  color: #fff;
+  display: block;
+  transition: 0.3s;
+  font-family: 'Indie Flower', cursive; /* Cute Font */
+}
+
+.side-nav a:hover {
+  color: #AD6B8D;
+}
+
+.side-nav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+#main-overlay {
+  background-color: rgba(0,0,0,0);
+}
+
+@media screen and (max-height: 450px) {
+  .side-nav {padding-top: 15px;}
+  .side-nav a {font-size: 18px;}
+}
+/* END OF NAVIGATION BAR */
+
+/* TESTING */
+/*
+@media all and (min-width: 960px) {
+  body{
+    font-size: 20px;
+  }
+}
+
+@media all and (max-width: 959px) and (min-width: 600px) {
+  body{
+    font-size: 2vw;
+  }
+
+  img {
+    height: 20px;
+  }
+}
+
+@media all and (max-width: 599px) and (min-width: 50px) {
+  body{
+    font-size: 3vw;
+  }
+}
+*/
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.text-image {
+  align-self: center;
+  width: 25%;
+  float: left;
+  margin: 5px;
+  padding: 10px;
+}
+
+.block {
+  display: block;
+  margin: auto;
+}
+
+.fixed {
+  height: 300px;
+}
+
+.clear {
+  clear: both;
+}
+
+.fancy-link {
+  text-decoration: none;
+  padding: 5px;
+
+}
+
+.fancy-link:hover {
+  color: #b21e9e;
+}
+
