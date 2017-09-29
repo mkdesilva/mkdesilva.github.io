@@ -27,11 +27,20 @@ $(document).ready(function(){
       $('html, body').animate({
         scrollTop: $(hash).offset().top
       }, 800, function(){
-   
+
         // Add hash (#) to URL when done scrolling (default click behavior)
         window.location.hash = hash;
         closeNav();
       });
     } // End if
+  });
+});
+
+$(window).scroll(function() {
+
+  var scrollDist = $(this).scrollTop();
+
+  $('#border').css({
+    'transform': 'translate(0px, ' + scrollDist / 1.5 + '%)'
   });
 });

@@ -38,19 +38,40 @@ hr:after {
   font-size: 18px;
 }
 
+.header-bg {
+    height: 100vh;
+    min-height: 500px;
+    position: relative;
+    background-image: url("./images/winter.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: flex;
+    margin: -50px;
+    flex-direction: column;
+    /*align-items: center;*/
+}
+
 #border {
-  padding: 0px 60px;
+  /*padding: 0px 60px;*/
+      height: 100px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    margin-top: -300px;
 }
 
 #hero {
   text-align: center;
-  border: 3px solid #F19FC0;
+  /*border: 3px solid #F19FC0;*/
   padding-bottom: 15px;
 }
 
 .hero-text {
   text-align: center;
-  font-size:6em;
+  font-size:10em;
   font-family: 'Miss Fajardose', cursive; /* fancy font */
   color: #F19FC0;
 }
@@ -67,12 +88,14 @@ hr:after {
 }
 
 @media only screen and (max-device-width: 480px) {
-  #hero {
-    border: none;
-  }
+
   body {
     padding: 20px;  
   }
+  #border {
+    margin-top: -200px;
+  }
+
   .hero-text {
     font-size: 4em;
   }
@@ -88,6 +111,11 @@ hr:after {
   .mobile {
     display: block;
   }
+
+  .handle {
+    margin: 15px;
+  }
+
 }
 
 .section-header {
@@ -109,6 +137,15 @@ hr:after {
 }
 
 /* Side Navigation Bar */
+
+.handle {
+  position:fixed;
+  text-align: left;
+  padding: 45px 15px;
+  font-size:30px;
+  cursor:pointer;
+  color:#F19FC0;
+}
 
 .side-nav {
   height: 100%;
