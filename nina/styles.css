@@ -92,6 +92,11 @@ hr:after {
   body {
     padding: 20px;  
   }
+
+  .header-bg {
+    background-image: url(./images/winter-mobile.jpg)
+  }
+
   #border {
     margin-top: -200px;
   }
