@@ -35,10 +35,10 @@ $(function() {
         });
 
         if (scrollDist > 100) {
-            // console.log('Activated');
+            // Adds background
             $('#navBar').addClass("transparentBG");
         } else {
-            // console.log('Decative');
+            // Removes background
             $('#navBar').removeClass("transparentBG");
         }
     });
