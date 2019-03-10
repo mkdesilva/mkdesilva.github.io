@@ -36,8 +36,6 @@ body {
     color: #29393d;
 }
 
-
-
 h1 {
     font-size: 2em;
 }
@@ -60,7 +58,7 @@ h1 {
 .minLogo {
     width: 100%;
     position: absolute;
-    top: 25%;
+    top: 35%;
     left: 10%;
     /* margin-top: -150px; */
     /* backgrounsd-color: black; */
