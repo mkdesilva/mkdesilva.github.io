@@ -83,3 +83,8 @@ h1 {
 .github:hover .flatText {
   color: #547ccd;
 }
+
+a {
+  color: #547ccd;
+  font-size: 1em;
+}
