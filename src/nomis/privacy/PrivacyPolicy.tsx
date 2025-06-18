@@ -16,22 +16,14 @@ export default function PrivacyPolicy() {
               <h2 className="text-xl font-semibold mb-2">
                 Information We Collect
               </h2>
-              <p>
-                We collect information that you provide directly to us,
-                including your email address and any other information you
-                choose to provide.
-              </p>
+              <p>We do not collect any personal information from you.</p>
             </section>
 
             <section>
               <h2 className="text-xl font-semibold mb-2">
                 How We Use Your Information
               </h2>
-              <p>
-                We use the information we collect to provide, maintain, and
-                improve our services, to communicate with you, and to protect
-                our users.
-              </p>
+              <p>We do not use your personal information for any purpose.</p>
             </section>
 
             <section>
