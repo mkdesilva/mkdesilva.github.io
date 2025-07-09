@@ -1,6 +1,75 @@
+import { useState, useEffect } from "react";
+
 export default function NomisLanding() {
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [visibleScreenshots, setVisibleScreenshots] = useState(
+    new Set(["0_Summary.png"])
+  );
+
+  useEffect(() => {
+    // Preload critical images
+    const criticalImages = [
+      "/nomis/icon.png",
+      "/nomis/screenshots/0_Summary.png",
+      "/download-app-store.svg",
+    ];
+
+    let loadedCount = 0;
+    const totalImages = criticalImages.length;
+
+    const checkAllLoaded = () => {
+      loadedCount++;
+      if (loadedCount === totalImages) {
+        setImagesLoaded(true);
+      }
+    };
+
+    criticalImages.forEach((src) => {
+      const img = new Image();
+      img.onload = checkAllLoaded;
+      img.onerror = checkAllLoaded; // Count errors as loaded to prevent hanging
+      img.src = src;
+    });
+
+    // Set up intersection observer for carousel images
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const imgSrc = entry.target.getAttribute("data-src");
+            if (imgSrc) {
+              setVisibleScreenshots((prev) => new Set([...prev, imgSrc]));
+            }
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "50px" }
+    );
+
+    // Observe all carousel images
+    const carouselImages = document.querySelectorAll("[data-src]");
+    carouselImages.forEach((img) => observer.observe(img));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      {/* Preload critical images */}
+      <link rel="preload" as="image" href="/nomis/icon.png" />
+      <link rel="preload" as="image" href="/nomis/screenshots/0_Summary.png" />
+      <link rel="preload" as="image" href="/download-app-store.svg" />
+
+      {/* Loading overlay for critical images */}
+      {!imagesLoaded && (
+        <div className="fixed inset-0 bg-white bg-opacity-90 flex items-center justify-center z-50">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-slate-600">Loading Nomis...</p>
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <header className="relative">
         <div className="max-w-6xl mx-auto px-6 py-8">
@@ -11,6 +80,8 @@ export default function NomisLanding() {
                 src="/nomis/icon.png"
                 alt="Nomis App Icon"
                 className="w-12 h-12 rounded-2xl shadow-lg"
+                loading="eager"
+                decoding="async"
               />
               <h1 className="text-2xl font-semibold text-slate-900">Nomis</h1>
             </div>
@@ -68,6 +139,8 @@ export default function NomisLanding() {
                     src="/download-app-store.svg"
                     alt="Download on the App Store"
                     className="h-auto w-40"
+                    loading="eager"
+                    decoding="async"
                   />
                 </a>
                 <a
@@ -86,6 +159,8 @@ export default function NomisLanding() {
                   src="/nomis/screenshots/0_Summary.png"
                   alt="Nomis App Summary Screen"
                   className="w-80 h-auto shadow-2xl rounded-3xl"
+                  loading="eager"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -249,6 +324,8 @@ export default function NomisLanding() {
                     src="/nomis/screenshots/0_Summary.png"
                     alt="Summary Overview"
                     className="w-full h-auto rounded-2xl"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
 
@@ -258,9 +335,16 @@ export default function NomisLanding() {
                   style={{ scrollSnapAlign: "start" }}
                 >
                   <img
-                    src="/nomis/screenshots/1_Monthly.png"
+                    src={
+                      visibleScreenshots.has("1_Monthly.png")
+                        ? "/nomis/screenshots/1_Monthly.png"
+                        : "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 640'%3E%3Crect width='320' height='640' fill='%23f1f5f9'/%3E%3C/svg%3E"
+                    }
                     alt="Monthly Breakdown"
                     className="w-full h-auto rounded-2xl"
+                    loading="lazy"
+                    decoding="async"
+                    data-src="1_Monthly.png"
                   />
                 </div>
 
@@ -270,9 +354,16 @@ export default function NomisLanding() {
                   style={{ scrollSnapAlign: "start" }}
                 >
                   <img
-                    src="/nomis/screenshots/2_Category Management.png"
+                    src={
+                      visibleScreenshots.has("2_Category Management.png")
+                        ? "/nomis/screenshots/2_Category Management.png"
+                        : "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 640'%3E%3Crect width='320' height='640' fill='%23f1f5f9'/%3E%3C/svg%3E"
+                    }
                     alt="Category Management"
                     className="w-full h-auto rounded-2xl"
+                    loading="lazy"
+                    decoding="async"
+                    data-src="2_Category Management.png"
                   />
                 </div>
 
@@ -282,9 +373,16 @@ export default function NomisLanding() {
                   style={{ scrollSnapAlign: "start" }}
                 >
                   <img
-                    src="/nomis/screenshots/3_Add expenses.png"
+                    src={
+                      visibleScreenshots.has("3_Add expenses.png")
+                        ? "/nomis/screenshots/3_Add expenses.png"
+                        : "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 640'%3E%3Crect width='320' height='640' fill='%23f1f5f9'/%3E%3C/svg%3E"
+                    }
                     alt="Add Expenses"
                     className="w-full h-auto rounded-2xl"
+                    loading="lazy"
+                    decoding="async"
+                    data-src="3_Add expenses.png"
                   />
                 </div>
 
@@ -294,9 +392,16 @@ export default function NomisLanding() {
                   style={{ scrollSnapAlign: "start" }}
                 >
                   <img
-                    src="/nomis/screenshots/4_Budgets.png"
+                    src={
+                      visibleScreenshots.has("4_Budgets.png")
+                        ? "/nomis/screenshots/4_Budgets.png"
+                        : "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 640'%3E%3Crect width='320' height='640' fill='%23f1f5f9'/%3E%3C/svg%3E"
+                    }
                     alt="Budget Management"
                     className="w-full h-auto rounded-2xl"
+                    loading="lazy"
+                    decoding="async"
+                    data-src="4_Budgets.png"
                   />
                 </div>
 
@@ -306,9 +411,16 @@ export default function NomisLanding() {
                   style={{ scrollSnapAlign: "start" }}
                 >
                   <img
-                    src="/nomis/screenshots/5_History.png"
+                    src={
+                      visibleScreenshots.has("5_History.png")
+                        ? "/nomis/screenshots/5_History.png"
+                        : "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 640'%3E%3Crect width='320' height='640' fill='%23f1f5f9'/%3E%3C/svg%3E"
+                    }
                     alt="Expense History"
                     className="w-full h-auto rounded-2xl"
+                    loading="lazy"
+                    decoding="async"
+                    data-src="5_History.png"
                   />
                 </div>
               </div>
@@ -327,6 +439,8 @@ export default function NomisLanding() {
                   src="/nomis/icon.png"
                   alt="Nomis App Icon"
                   className="w-8 h-8 rounded-xl"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <h4 className="text-xl font-semibold text-white">Nomis</h4>
               </div>
