@@ -471,7 +471,12 @@ export default function NomisLanding() {
           </div>
 
           <div className="border-t border-slate-800 mt-12 pt-8 text-center text-slate-400">
-            <p>&copy; 2025 MK De Silva. All rights reserved.</p>
+            <p>
+              Built by{" "}
+              <a href="/" className="hover:text-white transition-colors">
+                MK De Silva
+              </a>
+            </p>
           </div>
         </div>
       </footer>
