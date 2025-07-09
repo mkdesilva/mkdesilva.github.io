@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
             <div className="flex items-center space-x-3">
               <a href="/nomis" className="flex items-center space-x-3">
                 <img
-                  src="/nomis/icon.png"
+                  src="/nomis/icon_48.png"
                   alt="Nomis App Icon"
                   className="w-12 h-12 rounded-2xl shadow-lg"
                 />

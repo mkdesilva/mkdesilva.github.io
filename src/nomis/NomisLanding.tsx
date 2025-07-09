@@ -5,7 +5,7 @@ export default function NomisLanding() {
 
   useEffect(() => {
     // Preload critical images
-    const criticalImages = ["/nomis/icon.png", "/download-app-store.svg"];
+    const criticalImages = ["/nomis/icon_48.png", "/download-app-store.svg"];
 
     let loadedCount = 0;
     const totalImages = criticalImages.length;
@@ -28,7 +28,7 @@ export default function NomisLanding() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Preload critical images */}
-      <link rel="preload" as="image" href="/nomis/icon.png" />
+      <link rel="preload" as="image" href="/nomis/icon_48.png" />
       <link rel="preload" as="image" href="/nomis/screenshots/0_Summary.png" />
       <link rel="preload" as="image" href="/download-app-store.svg" />
 
@@ -49,7 +49,7 @@ export default function NomisLanding() {
             <div className="flex items-center space-x-3">
               {/* Real Nomis Icon */}
               <img
-                src="/nomis/icon.png"
+                src="/nomis/icon_48.png"
                 alt="Nomis App Icon"
                 className="w-12 h-12 rounded-2xl shadow-lg"
                 loading="eager"
@@ -377,7 +377,7 @@ export default function NomisLanding() {
             <div>
               <div className="flex items-center space-x-3 mb-4">
                 <img
-                  src="/nomis/icon.png"
+                  src="/nomis/icon_48.png"
                   alt="Nomis App Icon"
                   className="w-8 h-8 rounded-xl"
                   loading="lazy"
