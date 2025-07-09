@@ -2,17 +2,10 @@ import { useState, useEffect } from "react";
 
 export default function NomisLanding() {
   const [imagesLoaded, setImagesLoaded] = useState(false);
-  const [visibleScreenshots, setVisibleScreenshots] = useState(
-    new Set(["0_Summary.png"])
-  );
 
   useEffect(() => {
     // Preload critical images
-    const criticalImages = [
-      "/nomis/icon.png",
-      "/nomis/screenshots/0_Summary.png",
-      "/download-app-store.svg",
-    ];
+    const criticalImages = ["/nomis/icon.png", "/download-app-store.svg"];
 
     let loadedCount = 0;
     const totalImages = criticalImages.length;
@@ -30,27 +23,6 @@ export default function NomisLanding() {
       img.onerror = checkAllLoaded; // Count errors as loaded to prevent hanging
       img.src = src;
     });
-
-    // Set up intersection observer for carousel images
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const imgSrc = entry.target.getAttribute("data-src");
-            if (imgSrc) {
-              setVisibleScreenshots((prev) => new Set([...prev, imgSrc]));
-            }
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "50px" }
-    );
-
-    // Observe all carousel images
-    const carouselImages = document.querySelectorAll("[data-src]");
-    carouselImages.forEach((img) => observer.observe(img));
-
-    return () => observer.disconnect();
   }, []);
 
   return (
@@ -324,7 +296,6 @@ export default function NomisLanding() {
                     src="/nomis/screenshots/0_Summary.png"
                     alt="Summary Overview"
                     className="w-full h-auto rounded-2xl"
-                    loading="lazy"
                     decoding="async"
                   />
                 </div>
@@ -335,16 +306,10 @@ export default function NomisLanding() {
                   style={{ scrollSnapAlign: "start" }}
                 >
                   <img
-                    src={
-                      visibleScreenshots.has("1_Monthly.png")
-                        ? "/nomis/screenshots/1_Monthly.png"
-                        : "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 640'%3E%3Crect width='320' height='640' fill='%23f1f5f9'/%3E%3C/svg%3E"
-                    }
+                    src="/nomis/screenshots/1_Monthly.png"
                     alt="Monthly Breakdown"
                     className="w-full h-auto rounded-2xl"
-                    loading="lazy"
                     decoding="async"
-                    data-src="1_Monthly.png"
                   />
                 </div>
 
@@ -354,16 +319,10 @@ export default function NomisLanding() {
                   style={{ scrollSnapAlign: "start" }}
                 >
                   <img
-                    src={
-                      visibleScreenshots.has("2_Category Management.png")
-                        ? "/nomis/screenshots/2_Category Management.png"
-                        : "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 640'%3E%3Crect width='320' height='640' fill='%23f1f5f9'/%3E%3C/svg%3E"
-                    }
+                    src="/nomis/screenshots/2_Category Management.png"
                     alt="Category Management"
                     className="w-full h-auto rounded-2xl"
-                    loading="lazy"
                     decoding="async"
-                    data-src="2_Category Management.png"
                   />
                 </div>
 
@@ -373,16 +332,10 @@ export default function NomisLanding() {
                   style={{ scrollSnapAlign: "start" }}
                 >
                   <img
-                    src={
-                      visibleScreenshots.has("3_Add expenses.png")
-                        ? "/nomis/screenshots/3_Add expenses.png"
-                        : "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 640'%3E%3Crect width='320' height='640' fill='%23f1f5f9'/%3E%3C/svg%3E"
-                    }
+                    src="/nomis/screenshots/3_Add expenses.png"
                     alt="Add Expenses"
                     className="w-full h-auto rounded-2xl"
-                    loading="lazy"
                     decoding="async"
-                    data-src="3_Add expenses.png"
                   />
                 </div>
 
@@ -392,16 +345,10 @@ export default function NomisLanding() {
                   style={{ scrollSnapAlign: "start" }}
                 >
                   <img
-                    src={
-                      visibleScreenshots.has("4_Budgets.png")
-                        ? "/nomis/screenshots/4_Budgets.png"
-                        : "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 640'%3E%3Crect width='320' height='640' fill='%23f1f5f9'/%3E%3C/svg%3E"
-                    }
+                    src="/nomis/screenshots/4_Budgets.png"
                     alt="Budget Management"
                     className="w-full h-auto rounded-2xl"
-                    loading="lazy"
                     decoding="async"
-                    data-src="4_Budgets.png"
                   />
                 </div>
 
@@ -411,16 +358,10 @@ export default function NomisLanding() {
                   style={{ scrollSnapAlign: "start" }}
                 >
                   <img
-                    src={
-                      visibleScreenshots.has("5_History.png")
-                        ? "/nomis/screenshots/5_History.png"
-                        : "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 640'%3E%3Crect width='320' height='640' fill='%23f1f5f9'/%3E%3C/svg%3E"
-                    }
+                    src="/nomis/screenshots/5_History.png"
                     alt="Expense History"
                     className="w-full h-auto rounded-2xl"
-                    loading="lazy"
                     decoding="async"
-                    data-src="5_History.png"
                   />
                 </div>
               </div>
