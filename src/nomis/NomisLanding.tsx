@@ -98,7 +98,7 @@ export default function NomisLanding() {
                 <span className="text-blue-600"> finances</span>
               </h2>
               <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-                A powerful yet intuitive budget tracking app designed for modern
+                A simple and intuitive budget tracking app designed for modern
                 life. Track expenses, manage budgets, and gain insights into
                 your spending habits.
               </p>
