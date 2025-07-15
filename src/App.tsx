@@ -18,8 +18,11 @@ function App() {
 
           <p className="text-gray-700 leading-relaxed">
             {"Currently at "}
-            <a href="https://oozou.com" className="link-hover">
-              OOZOU
+            <a
+              href="https://oozou.com"
+              className="relative rounded z-10 overflow-hidden underline before:content-[''] before:absolute before:inset-0 before:bg-[#e22061]/20 before:rounded before:skew-y-[-2deg] before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100"
+            >
+              <span className="relative z-10">OOZOU</span>
             </a>
             {
               " building enterprise applications with React Native, Node.js, and Next.js."
