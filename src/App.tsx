@@ -76,7 +76,7 @@ function App() {
                 >
                   <span className="relative z-10">PC Part Prices</span>
                 </a>
-                {" — Price comparison for PC components (WIP)"}
+                {" — Price history for PC components (WIP)"}
               </div>
             </div>
           </div>
@@ -87,3 +87,4 @@ function App() {
 }
 
 export default App;
+
