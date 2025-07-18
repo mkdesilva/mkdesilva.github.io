@@ -5,8 +5,8 @@ function App() {
   const yearsOfExperience = calculateYearsOfExperience();
 
   return (
-    <div className="min-h-screen bg-amber-50 text-gray-900 font-mono">
-      <div className="max-w-2xl px-16 py-20">
+    <div className="min-h-screen bg-blue-50 text-gray-900 font-mono">
+      <div className="max-w-2xl px-4 sm:px-16 py-20">
         <div className="space-y-6">
           <h1 className="text-2xl font-bold">MK De Silva</h1>
 
@@ -29,7 +29,7 @@ function App() {
             }
           </p>
 
-          <div className="flex gap-4 text-gray-700">
+          <div className="flex flex-wrap gap-2 sm:gap-4 text-gray-700">
             <a
               href="https://github.com/mkdesilva"
               className="relative px-2 py-0.5 rounded z-10 overflow-hidden underline before:content-[''] before:absolute before:inset-0 before:bg-[#333]/20 before:rounded before:skew-y-[-2deg] before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100"
@@ -90,4 +90,3 @@ function App() {
 }
 
 export default App;
-
