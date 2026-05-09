@@ -18,6 +18,7 @@ export default defineConfig({
         nomis_support: resolve(__dirname, "nomis/support/index.html"),
         nomis_terms: resolve(__dirname, "nomis/terms/index.html"),
         nomis_privacy: resolve(__dirname, "nomis/privacy/index.html"),
+        qr_main: resolve(__dirname, "qr/index.html"),
       },
     },
   },
