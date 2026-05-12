@@ -6,6 +6,9 @@ export function parseWithError(text: string): ParseResult {
   try {
     return { ok: true, value: JSON.parse(text) };
   } catch (e) {
+    const ndjson = tryParseNdjson(text);
+    if (ndjson) return { ok: true, value: ndjson };
+
     const msg = e instanceof Error ? e.message : String(e);
     const posMatch = msg.match(/position\s+(\d+)/i);
     let line = 1;
@@ -29,6 +32,20 @@ export function parseWithError(text: string): ParseResult {
     }
     return { ok: false, message: msg, line, col };
   }
+}
+
+function tryParseNdjson(text: string): unknown[] | null {
+  const lines = text.split("\n").map((l) => l.trim()).filter((l) => l !== "");
+  if (lines.length < 2) return null;
+  const out: unknown[] = [];
+  for (const l of lines) {
+    try {
+      out.push(JSON.parse(l));
+    } catch {
+      return null;
+    }
+  }
+  return out;
 }
 
 function sortKeysDeep(value: unknown): unknown {

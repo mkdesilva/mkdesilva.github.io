@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { parseWithError, sortedStringify } from "./utils";
 
 type IndentChoice = "2" | "4" | "tab";
+type Mode = "pretty" | "minify";
 
 const indentValue = (c: IndentChoice): number | string =>
   c === "2" ? 2 : c === "4" ? 4 : "\t";
@@ -10,6 +11,7 @@ export default function JsonFormat() {
   const [input, setInput] = useState("");
   const [indent, setIndent] = useState<IndentChoice>("2");
   const [sortKeys, setSortKeys] = useState(false);
+  const [mode, setMode] = useState<Mode>("pretty");
   const [output, setOutput] = useState("");
   const [error, setError] = useState<{
     message: string;
@@ -18,7 +20,7 @@ export default function JsonFormat() {
   } | null>(null);
   const [copied, setCopied] = useState(false);
 
-  const format = (mode: "pretty" | "minify") => {
+  useEffect(() => {
     if (!input.trim()) {
       setOutput("");
       setError(null);
@@ -37,7 +39,7 @@ export default function JsonFormat() {
         ? sortedStringify(parsed.value, space)
         : JSON.stringify(parsed.value, null, space)
     );
-  };
+  }, [input, indent, sortKeys, mode]);
 
   const onCopy = async () => {
     if (!output) return;
@@ -71,14 +73,22 @@ export default function JsonFormat() {
     <section className="space-y-4">
       <div className="flex flex-wrap items-center gap-2">
         <button
-          onClick={() => format("pretty")}
-          className="px-3 py-1.5 text-sm bg-gray-900 text-white rounded hover:bg-gray-700"
+          onClick={() => setMode("pretty")}
+          className={`px-3 py-1.5 text-sm rounded ${
+            mode === "pretty"
+              ? "bg-gray-900 text-white hover:bg-gray-700"
+              : "border border-gray-400 bg-white hover:bg-gray-100"
+          }`}
         >
           Pretty
         </button>
         <button
-          onClick={() => format("minify")}
-          className="px-3 py-1.5 text-sm border border-gray-400 rounded bg-white hover:bg-gray-100"
+          onClick={() => setMode("minify")}
+          className={`px-3 py-1.5 text-sm rounded ${
+            mode === "minify"
+              ? "bg-gray-900 text-white hover:bg-gray-700"
+              : "border border-gray-400 bg-white hover:bg-gray-100"
+          }`}
         >
           Minify
         </button>
