@@ -58,6 +58,7 @@ function App() {
 
           <PreviousExperience />
           <Projects />
+          <Toolbox />
         </div>
       </div>
     </div>
@@ -79,24 +80,6 @@ const Projects = () => (
       </div>
       <div className="text-gray-700 leading-relaxed">
         <a
-          href="/qr/"
-          className="relative px-2 py-0.5 rounded z-10 overflow-hidden underline before:content-[''] before:absolute before:inset-0 before:bg-blue-600/20 before:rounded before:skew-y-[-2deg] before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100"
-        >
-          <span className="relative z-10">QR</span>
-        </a>
-        {" — In-browser QR code reader & generator"}
-      </div>
-      <div className="text-gray-700 leading-relaxed">
-        <a
-          href="/json/"
-          className="relative px-2 py-0.5 rounded z-10 overflow-hidden underline before:content-[''] before:absolute before:inset-0 before:bg-blue-600/20 before:rounded before:skew-y-[-2deg] before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100"
-        >
-          <span className="relative z-10">JSON</span>
-        </a>
-        {" — Format, minify, sort, and diff JSON in your browser"}
-      </div>
-      <div className="text-gray-700 leading-relaxed">
-        <a
           href="https://pcpartprices.app"
           className="relative px-2 py-0.5 rounded z-10 overflow-hidden underline before:content-[''] before:absolute before:inset-0 before:bg-blue-600/20 before:rounded before:skew-y-[-2deg] before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100"
           target="_blank"
@@ -106,6 +89,55 @@ const Projects = () => (
         </a>
         {" — Price history for PC components (WIP)"}
       </div>
+    </div>
+  </div>
+);
+
+type Tool = {
+  href: string;
+  name: string;
+  blurb: string;
+  icon: string;
+};
+
+const TOOLS: Tool[] = [
+  {
+    href: "/qr/",
+    name: "QR",
+    blurb: "Read & generate QR codes",
+    icon: "/icons/qr.png",
+  },
+  {
+    href: "/json/",
+    name: "JSON",
+    blurb: "Format, sort & diff JSON",
+    icon: "/icons/json.png",
+  },
+];
+
+const Toolbox = () => (
+  <div className="space-y-4">
+    <h2 className="text-xl font-bold">Toolbox</h2>
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+      {TOOLS.map((t) => (
+        <a
+          key={t.href}
+          href={t.href}
+          className="group block rounded-2xl p-3 transition-all duration-200 hover:-translate-y-1"
+        >
+          <div className="aspect-square w-full overflow-hidden flex items-center justify-center">
+            <img
+              src={t.icon}
+              alt={t.name}
+              className="w-full h-full object-contain transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105 drop-shadow-md"
+            />
+          </div>
+          <div className="mt-3">
+            <div className="font-semibold text-gray-900">{t.name}</div>
+            <div className="text-xs text-gray-600 leading-snug">{t.blurb}</div>
+          </div>
+        </a>
+      ))}
     </div>
   </div>
 );
