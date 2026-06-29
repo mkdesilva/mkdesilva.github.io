@@ -1,0 +1,51 @@
+/* ============================================================
+   Desos Grove — Typography tokens
+   Display: Cormorant Garamond (elegant, high-contrast serif)
+   Body/UI: Hanken Grotesk (warm humanist sans)
+   Mono:    JetBrains Mono
+   ============================================================ */
+:root {
+  /* Families */
+  --font-display: 'Cormorant Garamond', 'Hoefler Text', Georgia, serif;
+  --font-sans: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  /* Weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-display: 600; /* Cormorant reads best at 500–600 for headings */
+
+  /* Fluid type scale (1.25 minor-third base, display steps larger) */
+  --text-2xs: 0.6875rem;  /* 11px — micro labels */
+  --text-xs:  0.75rem;    /* 12px */
+  --text-sm:  0.875rem;   /* 14px */
+  --text-base:1rem;       /* 16px */
+  --text-md:  1.125rem;   /* 18px */
+  --text-lg:  1.375rem;   /* 22px */
+  --text-xl:  1.75rem;    /* 28px */
+  --text-2xl: 2.25rem;    /* 36px */
+  --text-3xl: 3rem;       /* 48px */
+  --text-4xl: 4rem;       /* 64px */
+  --text-5xl: 5.5rem;     /* 88px — hero display */
+
+  /* Line heights */
+  --leading-tight: 1.05;   /* big display */
+  --leading-snug: 1.2;     /* headings */
+  --leading-normal: 1.5;   /* body */
+  --leading-relaxed: 1.65; /* long-form prose */
+
+  /* Letter spacing */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+  --tracking-wider: 0.12em;  /* eyebrow / tagline caps */
+  --tracking-widest: 0.22em; /* the "Software · Games · Apps" treatment */
+
+  /* Semantic roles */
+  --display-family: var(--font-display);
+  --heading-family: var(--font-display);
+  --body-family: var(--font-sans);
+  --eyebrow-family: var(--font-sans);
+}

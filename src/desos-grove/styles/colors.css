@@ -1,0 +1,135 @@
+/* ============================================================
+   Desos Grove — Color tokens
+   Botanical studio palette: forest greens, gilt gold, parchment.
+   Base ramps first, semantic aliases second.
+   ============================================================ */
+:root {
+  /* — Grove green ramp (the canopy) — */
+  --green-950: #0E1F17;
+  --green-900: #162D22; /* brand primary / signature surface */
+  --green-800: #1E3A2C;
+  --green-700: #284B39;
+  --green-600: #366149;
+  --green-500: #4A7C5F;
+  --green-400: #6E9C84;
+  --green-300: #9BC0AC;
+  --green-200: #C5DBCF;
+  --green-100: #E5EFE9;
+
+  /* — Gilt gold ramp (the mark) — */
+  --gold-800: #7E6634;
+  --gold-700: #9A7E45;
+  --gold-600: #B49157;
+  --gold-500: #C6A66A; /* brand gold */
+  --gold-400: #D6BD8A;
+  --gold-300: #E4D2AC;
+  --gold-200: #F0E4CB;
+  --gold-100: #F8F1E2;
+
+  /* — Warm neutrals (parchment & ink) — */
+  --paper-50:  #FBF8F1; /* lightest parchment */
+  --paper-100: #F5F0E4;
+  --paper-200: #EAE2D0;
+  --paper-300: #DBD0B8;
+  --ink-900: #14201A; /* near-black, green-cast */
+  --ink-800: #21302A;
+  --ink-700: #33433B;
+  --ink-600: #4C5C53;
+  --ink-500: #6A7972;
+  --ink-400: #909C96;
+  --ink-300: #B6BFBA;
+  --ink-200: #D7DDD9;
+  --ink-100: #ECEFED;
+  --white: #FFFFFF;
+
+  /* — Botanical semantics — */
+  --leaf-600:    #2F7A4D; /* success */
+  --leaf-500:    #3E9460;
+  --leaf-100:    #E0F0E6;
+  --honey-600:   #C68A2E; /* warning */
+  --honey-500:   #DCA346;
+  --honey-100:   #F8EDD6;
+  --berry-600:   #A8413A; /* danger / destructive */
+  --berry-500:   #C2554C;
+  --berry-100:   #F6E2E0;
+  --sage-600:    #3B7480; /* info */
+  --sage-500:    #4E8E9B;
+  --sage-100:    #E1EEF0;
+
+  /* ====================================================
+     SEMANTIC ALIASES — reference these in components
+     ==================================================== */
+
+  /* Brand */
+  --brand:            var(--green-900);
+  --brand-hover:      var(--green-800);
+  --brand-press:      var(--green-950);
+  --accent:           var(--gold-500);
+  --accent-hover:     var(--gold-400);
+  --accent-press:     var(--gold-600);
+
+  /* Surfaces — light (default) */
+  --surface-page:     var(--paper-50);
+  --surface-card:     var(--white);
+  --surface-sunken:   var(--paper-100);
+  --surface-raised:   var(--white);
+  --surface-inverse:  var(--green-900);
+
+  /* Text */
+  --text-strong:      var(--ink-900);
+  --text-body:        var(--ink-700);
+  --text-muted:       var(--ink-500);
+  --text-faint:       var(--ink-400);
+  --text-on-brand:    var(--gold-100);
+  --text-on-accent:   var(--green-950);
+  --text-link:        var(--green-700);
+
+  /* Borders & lines */
+  --border-subtle:    var(--paper-200);
+  --border-default:   var(--paper-300);
+  --border-strong:    var(--ink-300);
+  --border-gilt:      var(--gold-500);
+  --hairline:         color-mix(in oklch, var(--ink-900) 10%, transparent);
+
+  /* Focus */
+  --focus-ring:       color-mix(in oklch, var(--gold-500) 70%, transparent);
+
+  /* States feedback */
+  --success:  var(--leaf-600);
+  --success-surface: var(--leaf-100);
+  --warning:  var(--honey-600);
+  --warning-surface: var(--honey-100);
+  --danger:   var(--berry-600);
+  --danger-surface: var(--berry-100);
+  --info:     var(--sage-600);
+  --info-surface: var(--sage-100);
+}
+
+/* ====================================================
+   DARK / SIGNATURE surface — the canopy theme.
+   Apply with class="dg-dark" on any container.
+   ==================================================== */
+.dg-dark {
+  --surface-page:    var(--green-950);
+  --surface-card:    var(--green-900);
+  --surface-sunken:  var(--green-950);
+  --surface-raised:  var(--green-800);
+  --surface-inverse: var(--paper-50);
+
+  --text-strong:     var(--paper-50);
+  --text-body:       var(--green-100);
+  --text-muted:      var(--green-300);
+  --text-faint:      var(--green-400);
+  --text-on-brand:   var(--gold-100);
+  --text-link:       var(--gold-400);
+
+  --border-subtle:   color-mix(in oklch, var(--gold-500) 14%, transparent);
+  --border-default:  color-mix(in oklch, var(--gold-500) 22%, transparent);
+  --border-strong:   var(--gold-700);
+  --hairline:        color-mix(in oklch, var(--gold-200) 12%, transparent);
+
+  --brand:           var(--gold-500);
+  --brand-hover:     var(--gold-400);
+  --brand-press:     var(--gold-600);
+  --text-on-brand:   var(--green-950);
+}

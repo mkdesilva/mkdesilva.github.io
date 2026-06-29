@@ -1,0 +1,84 @@
+/* ============================================================
+   Desos Grove — base element styles & helpers.
+   Light, opt-in resets. Components are self-contained; this
+   sets sane document defaults so the page inherits the brand.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--text-body);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Display headings default to the serif */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  color: var(--text-strong);
+  line-height: var(--leading-snug);
+  margin: 0;
+}
+
+h1 { font-size: var(--text-3xl); line-height: var(--leading-tight); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-xl); }
+h4 { font-size: var(--text-lg); }
+
+p { margin: 0; }
+a { color: var(--text-link); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+/* — Brand utility classes — */
+
+/* Eyebrow / kicker — the letterspaced tagline treatment */
+.dg-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* The "Software · Games · Apps" tagline rhythm */
+.dg-tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-muted);
+}
+
+/* Display serif helper */
+.dg-display {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-strong);
+}
+
+/* Gilt rule — a thin gold divider that fades at the ends */
+.dg-rule {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-500), transparent);
+  opacity: 0.6;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: var(--radius-sm);
+}
+
+::selection {
+  background: color-mix(in oklch, var(--gold-500) 35%, transparent);
+  color: var(--ink-900);
+}

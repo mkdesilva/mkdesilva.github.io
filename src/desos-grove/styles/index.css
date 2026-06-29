@@ -1,0 +1,11 @@
+/* ============================================================
+   Desos Grove Design System — global entry point.
+   Import THIS file to inherit every token (colors, type,
+   spacing, elevation) and the webfonts. Imports only.
+   ============================================================ */
+@import url('./fonts.css');
+@import url('./colors.css');
+@import url('./typography.css');
+@import url('./spacing.css');
+@import url('./elevation.css');
+@import url('./base.css');

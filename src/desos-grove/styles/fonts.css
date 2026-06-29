@@ -1,0 +1,11 @@
+/* ============================================================
+   Desos Grove — Fonts
+   SUBSTITUTION NOTE: the wordmark is an elegant high-contrast
+   Garamond. No source binaries were provided, so the nearest
+   Google Fonts match is used:
+     • Cormorant Garamond  → display serif (wordmark match)
+     • Hanken Grotesk      → UI / body sans
+     • JetBrains Mono      → code / data mono
+   Swap these for licensed binaries if available.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');

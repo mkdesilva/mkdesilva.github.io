@@ -20,6 +20,7 @@ export default defineConfig({
         nomis_privacy: resolve(__dirname, "nomis/privacy/index.html"),
         qr_main: resolve(__dirname, "qr/index.html"),
         json_main: resolve(__dirname, "json/index.html"),
+        desos_grove: resolve(__dirname, "desos-grove/index.html"),
       },
     },
   },
