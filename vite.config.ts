@@ -21,6 +21,7 @@ export default defineConfig({
         qr_main: resolve(__dirname, "qr/index.html"),
         json_main: resolve(__dirname, "json/index.html"),
         ninetyday_main: resolve(__dirname, "90day/index.html"),
+        ninetyday_form: resolve(__dirname, "90day/form/index.html"),
         desos_grove: resolve(__dirname, "desos-grove/index.html"),
       },
     },

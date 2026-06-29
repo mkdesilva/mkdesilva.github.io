@@ -699,13 +699,17 @@ export default function NinetyDayCalculator() {
                     <strong style={{ color: "var(--text-body)" }}>
                       In person
                     </strong>{" "}
-                    — required for your first report after each entry. Fill out
-                    the{" "}
-                    <a href={LINK.form} target="_blank" rel="noopener noreferrer">
-                      TM.47 form (PDF)
+                    — required for your first report after each entry.{" "}
+                    <a href={`/90day/form/?arrival=${value}`}>
+                      Pre-fill the TM.47 form →
                     </a>{" "}
-                    by hand and bring it, your passport, and a copy of the photo
-                    and visa pages to your local immigration office.
+                    then print, sign, and bring it with your passport and a copy
+                    of the photo and visa pages to your local immigration office.
+                    {" "}(Or grab a{" "}
+                    <a href={LINK.form} target="_blank" rel="noopener noreferrer">
+                      blank PDF
+                    </a>{" "}
+                    to fill by hand.)
                   </div>
                 </div>
 
