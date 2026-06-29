@@ -113,6 +113,12 @@ const TOOLS: Tool[] = [
     blurb: "Format, sort & diff JSON",
     icon: "/icons/json.png",
   },
+  {
+    href: "/90day/",
+    name: "90-Day Report",
+    blurb: "Thailand TM.47 date calculator",
+    icon: "/icons/90day.svg",
+  },
 ];
 
 const Toolbox = () => (

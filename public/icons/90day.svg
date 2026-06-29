@@ -1,0 +1,10 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="28" width="120" height="116" rx="18" fill="#162D22"/>
+  <rect x="20" y="28" width="120" height="116" rx="18" stroke="#C6A66A" stroke-width="2.5"/>
+  <path d="M20 58 a18 18 0 0 1 18 -18 h84 a18 18 0 0 1 18 18 v8 H20 Z" fill="#284B39"/>
+  <rect x="46" y="18" width="9" height="26" rx="4.5" fill="#C6A66A"/>
+  <rect x="105" y="18" width="9" height="26" rx="4.5" fill="#C6A66A"/>
+  <text x="80" y="116" font-family="'Cormorant Garamond', Georgia, serif" font-size="52" font-weight="600" fill="#F8F1E2" text-anchor="middle">90</text>
+  <circle cx="118" cy="120" r="14" fill="#2F7A4D"/>
+  <path d="M111 120 l5 5 l9 -10" stroke="#FBF8F1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
