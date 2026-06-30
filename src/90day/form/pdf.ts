@@ -7,8 +7,22 @@
  * at coordinates measured from the form's printed labels (origin bottom-left).
  * Tune COORDS via the calibration grid (`fillTm47(bytes, v, { calibrate: true })`).
  */
-import { PDFDocument, PDFFont, PDFPage, StandardFonts, rgb } from "pdf-lib";
+import { PDFDocument, PDFFont, PDFPage, rgb } from "pdf-lib";
+import fontkit from "@pdf-lib/fontkit";
 import type { Tm47Values } from "./model";
+
+/** Sarabun (the official Thai government document font) covers Latin + Thai. */
+const FONT_URL = "/90day/Sarabun-Regular.ttf";
+let fontBytesPromise: Promise<ArrayBuffer> | null = null;
+function loadFontBytes(): Promise<ArrayBuffer> {
+  if (!fontBytesPromise) {
+    fontBytesPromise = fetch(FONT_URL).then((res) => {
+      if (!res.ok) throw new Error(`Couldn't load the form font (${res.status})`);
+      return res.arrayBuffer();
+    });
+  }
+  return fontBytesPromise;
+}
 
 const PAGE_H = 841.92;
 const INK = rgb(0.05, 0.05, 0.08);
@@ -46,18 +60,12 @@ const MONTHS = [
 ];
 
 /**
- * Replace characters Helvetica's WinAnsi encoding can't render with "?".
- * Keeps printable ASCII (0x20-0x7E) and the Latin-1 supplement (0xA0-0xFF),
- * dropping the 0x7F-0x9F band (controls + WinAnsi's undefined slots). Newlines
- * are stripped here — multi-line callers split on them before sanitizing.
+ * Sarabun renders both Latin and Thai, so we keep every printable character and
+ * only strip control codes (incl. newlines — multi-line callers split first).
  */
 function sanitize(s: string): string {
-  let out = "";
-  for (const ch of s) {
-    const c = ch.codePointAt(0) ?? 0;
-    out += (c >= 0x20 && c <= 0x7e) || (c >= 0xa0 && c <= 0xff) ? ch : "?";
-  }
-  return out;
+  // eslint-disable-next-line no-control-regex
+  return s.replace(/[\u0000-\u001f\u007f]/g, "");
 }
 
 /** Trim a string to fit maxW at the given font/size (no wrapping). */
@@ -90,6 +98,8 @@ export type FillOptions = {
   calibrate?: boolean;
   /** Override "today" for the notification date (testing). */
   now?: Date;
+  /** Override the embedded font bytes (testing, where relative fetch is unavailable). */
+  fontBytes?: ArrayBuffer | Uint8Array;
 };
 
 export async function fillTm47(
@@ -98,8 +108,11 @@ export async function fillTm47(
   opts: FillOptions = {}
 ): Promise<Uint8Array> {
   const doc = await PDFDocument.load(templateBytes);
+  doc.registerFontkit(fontkit);
   const page = doc.getPages()[0];
-  const font = await doc.embedFont(StandardFonts.Helvetica);
+  const font = await doc.embedFont(opts.fontBytes ?? (await loadFontBytes()), {
+    subset: true,
+  });
 
   if (opts.calibrate) {
     drawGrid(page, font);

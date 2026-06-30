@@ -69,9 +69,17 @@ describe("fillTm47", () => {
     template.byteOffset,
     template.byteOffset + template.byteLength,
   );
+  const fontFile = readFileSync("public/90day/Sarabun-Regular.ttf");
+  const fontBytes = fontFile.buffer.slice(
+    fontFile.byteOffset,
+    fontFile.byteOffset + fontFile.byteLength,
+  );
 
   test("produces a valid one-page PDF", async () => {
-    const out = await fillTm47(bytes, SAMPLE, { now: new Date(2026, 5, 29) });
+    const out = await fillTm47(bytes, SAMPLE, {
+      now: new Date(2026, 5, 29),
+      fontBytes,
+    });
     expect(out.length).toBeGreaterThan(1000);
     // PDF magic header
     expect(new TextDecoder().decode(out.slice(0, 5))).toBe("%PDF-");
@@ -79,19 +87,21 @@ describe("fillTm47", () => {
     expect(reloaded.getPageCount()).toBe(1);
   });
 
-  test("handles overflow-length fields and non-Latin without throwing", async () => {
+  test("handles overflow-length fields and Thai script without throwing", async () => {
     const out = await fillTm47(
       bytes,
       {
         ...SAMPLE,
-        fullName: "MR สมชาย JONATHAN", // non-Latin should be sanitized, not throw
+        fullName: "MR สมชาย JONATHAN", // mixed Thai + Latin renders, not "?"
         laneRoad:
           "Soi Sukhumvit 101/1, Sukhumvit Road, a very long road name that must be truncated to stay inside its blank",
-        tambon: "ตำบลคลองเตยเหนือ", // non-Latin sub-district
+        tambon: "ตำบลคลองเตยเหนือ", // Thai sub-district
         province: "Bangkok Metropolis extra overflow province text",
       },
-      { now: new Date(2026, 5, 29) },
+      { now: new Date(2026, 5, 29), fontBytes },
     );
     expect(out.length).toBeGreaterThan(1000);
+    const reloaded = await PDFDocument.load(out);
+    expect(reloaded.getPageCount()).toBe(1);
   });
 });
