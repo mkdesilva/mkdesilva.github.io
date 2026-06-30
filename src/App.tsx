@@ -1,96 +1,104 @@
 import "./App.css";
 import { calculateYearsOfExperience } from "./utils/experience";
 
+const linkClass =
+  "underline underline-offset-[0.15em] transition-colors decoration-gray-300 text-[#111] hover:decoration-[#111] dark:decoration-[#4b5563] dark:text-[#d1d5db] dark:hover:text-[#f3f4f6] dark:hover:decoration-[#f3f4f6]";
+
+const proseClass =
+  "text-[0.95rem] leading-[1.75] text-[#4b5563] dark:text-[#d1d5db]";
+
 function App() {
   const yearsOfExperience = calculateYearsOfExperience();
 
   return (
-    <div className="min-h-screen bg-blue-50 text-gray-900 font-mono">
-      <div className="max-w-4xl px-4 sm:px-16 py-20">
-        <div className="space-y-6">
-          <h1 className="text-2xl font-bold">Michael De Silva</h1>
+    <div className="min-h-screen bg-white text-[#111] dark:bg-[#111] dark:text-[#f3f4f6]">
+      <div className="mx-auto max-w-2xl px-6 py-20 sm:py-28">
+        <header className="space-y-4">
+          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            Michael De Silva
+          </h1>
 
-          <p className="text-gray-700 leading-relaxed">
-            Full-stack & mobile developer crafting high-performance
+          <p className={proseClass}>
+            Full-stack &amp; mobile developer crafting high-performance
             applications. {yearsOfExperience}+ years of experience, based in
             Thailand.
           </p>
 
-          <p className="text-gray-700 leading-relaxed">
+          <p className={proseClass}>
             {"Currently at "}
-            <a
-              href="https://ling-app.com"
-              className="relative rounded z-10 overflow-hidden underline before:content-[''] before:absolute before:inset-0 before:bg-[#e22061]/20 before:rounded before:skew-y-[-2deg] before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100"
-            >
-              <span className="relative z-10">Ling</span>
+            <a href="https://ling-app.com" className={linkClass}>
+              Ling
             </a>
             {" building a language learning app with React Native and Node.js."}
           </p>
 
-          <div className="flex flex-wrap gap-2 sm:gap-4 text-gray-700">
-            <a
-              href="https://github.com/mkdesilva"
-              className="relative px-2 py-0.5 rounded z-10 overflow-hidden underline before:content-[''] before:absolute before:inset-0 before:bg-[#333]/20 before:rounded before:skew-y-[-2deg] before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100"
-            >
-              <span className="relative z-10">GitHub</span>
+          <nav className="flex flex-wrap gap-x-5 gap-y-2 pt-1 text-[0.95rem]">
+            <a href="https://github.com/mkdesilva" className={linkClass}>
+              GitHub
             </a>
             <a
               href="https://www.linkedin.com/in/mkdesilva/"
-              className="relative px-2 py-0.5 rounded z-10 overflow-hidden underline before:content-[''] before:absolute before:inset-0 before:bg-[#0077B5]/20 before:rounded before:skew-y-[-2deg] before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100"
+              className={linkClass}
             >
-              <span className="relative z-10">LinkedIn</span>
+              LinkedIn
             </a>
             <a
               href="/resume/Michael-De-Silva-Resume.pdf"
-              className="relative px-2 py-0.5 rounded z-10 overflow-hidden underline before:content-[''] before:absolute before:inset-0 before:bg-amber-700/20 before:rounded before:skew-y-[-2deg] before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100"
+              className={linkClass}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="relative z-10">Resume</span>
+              Resume
             </a>
-            <a
-              href="mailto:me@mkdesilva.com"
-              className="relative px-2 py-0.5 rounded z-10 overflow-hidden underline before:content-[''] before:absolute before:inset-0 before:bg-amber-700/20 before:rounded before:skew-y-[-2deg] before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100"
-            >
-              <span className="relative z-10">Email</span>
+            <a href="mailto:me@mkdesilva.com" className={linkClass}>
+              Email
             </a>
-          </div>
+          </nav>
+        </header>
 
-          <PreviousExperience />
-          <Projects />
-          <Toolbox />
-        </div>
+        <PreviousExperience />
+        <Projects />
+        <Toolbox />
       </div>
     </div>
   );
 }
 
-const Projects = () => (
-  <div className="space-y-4">
-    <h2 className="text-xl font-bold">Projects</h2>
-    <div className="space-y-3">
-      <div className="text-gray-700 leading-relaxed">
-        <a
-          href="/nomis/"
-          className="relative px-2 py-0.5 rounded z-10 overflow-hidden underline before:content-[''] before:absolute before:inset-0 before:bg-blue-600/20 before:rounded before:skew-y-[-2deg] before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100"
-        >
-          <span className="relative z-10">Nomis</span>
-        </a>
-        {" — Budget tracking app for iOS"}
-      </div>
-      <div className="text-gray-700 leading-relaxed">
-        <a
-          href="https://pcpartprices.app"
-          className="relative px-2 py-0.5 rounded z-10 overflow-hidden underline before:content-[''] before:absolute before:inset-0 before:bg-blue-600/20 before:rounded before:skew-y-[-2deg] before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="relative z-10">PC Part Prices</span>
-        </a>
-        {" — Price history for PC components (WIP)"}
-      </div>
+const Section = ({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) => (
+  <section className="mt-16">
+    <div className="border-t-2 border-[#111] pt-5 dark:border-[#f3f4f6]">
+      <h2 className="text-base font-semibold">{title}</h2>
+      <div className="mt-4 space-y-3">{children}</div>
     </div>
-  </div>
+  </section>
+);
+
+const Projects = () => (
+  <Section title="Projects">
+    <p className={proseClass}>
+      <a href="/nomis/" className={linkClass}>
+        Nomis
+      </a>
+      {" — Budget tracking app for iOS"}
+    </p>
+    <p className={proseClass}>
+      <a
+        href="https://pcpartprices.app"
+        className={linkClass}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        PC Part Prices
+      </a>
+      {" — Price history for PC components (WIP)"}
+    </p>
+  </Section>
 );
 
 type Tool = {
@@ -122,72 +130,71 @@ const TOOLS: Tool[] = [
 ];
 
 const Toolbox = () => (
-  <div className="space-y-4">
-    <h2 className="text-xl font-bold">Toolbox</h2>
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+  <Section title="Toolbox">
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
       {TOOLS.map((t) => (
         <a
           key={t.href}
           href={t.href}
-          className="group block rounded-2xl p-3 transition-all duration-200 hover:-translate-y-1"
+          className="group flex items-center gap-3 rounded-md border border-gray-200 p-3 transition-colors hover:border-[#111] dark:border-[#2a2a2a] dark:hover:border-[#f3f4f6]"
         >
-          <div className="aspect-square w-full overflow-hidden flex items-center justify-center">
-            <img
-              src={t.icon}
-              alt={t.name}
-              className="w-full h-full object-contain transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105 drop-shadow-md"
-            />
-          </div>
-          <div className="mt-3">
-            <div className="font-semibold text-gray-900">{t.name}</div>
-            <div className="text-xs text-gray-600 leading-snug">{t.blurb}</div>
+          <img
+            src={t.icon}
+            alt={t.name}
+            className="h-9 w-9 shrink-0 object-contain"
+          />
+          <div className="min-w-0">
+            <div className="text-sm font-semibold text-[#111] dark:text-[#f3f4f6]">
+              {t.name}
+            </div>
+            <div className="text-xs leading-snug text-gray-500 dark:text-[#9ca3af]">
+              {t.blurb}
+            </div>
           </div>
         </a>
       ))}
     </div>
-  </div>
+  </Section>
 );
 
 const PreviousExperience = () => (
-  <div className="space-y-4">
-    <h2 className="text-xl font-bold">Previously</h2>
-    <div className="space-y-3">
-      <div className="text-gray-700 leading-relaxed">
-        <a
-          href="https://oozou.com"
-          className="relative px-2 py-0.5 rounded z-10 overflow-hidden underline before:content-[''] before:absolute before:inset-0 before:bg-[#e22061]/20 before:rounded before:skew-y-[-2deg] before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="relative z-10">OOZOU</span>
-        </a>
-        {
-          "(2021—2025) — Lead Mobile Developer, led a team of 6 building React Native, iOS, and Next.js apps"
-        }
-      </div>
-      <div className="text-gray-700 leading-relaxed">
-        <a
-          href="https://www.scb.co.th"
-          className="relative px-2 py-0.5 rounded z-10 overflow-hidden underline before:content-[''] before:absolute before:inset-0 before:bg-[#4e2e7f]/20 before:rounded before:skew-y-[-2deg] before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="relative z-10">Siam Commercial Bank</span>
-        </a>
-        {"(2019—2021) — Squad Lead on a banking app with 1M+ daily users"}
-      </div>
-      <div className="text-gray-700 leading-relaxed">
-        <a
-          href="https://www.ringzerogames.com"
-          className="relative px-2 py-0.5 rounded z-10 overflow-hidden underline before:content-[''] before:absolute before:inset-0 before:bg-gray-700/20 before:rounded before:skew-y-[-2deg] before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="relative z-10">RingZero Game Studio</span>
-        </a>
-        {"(2018—2019) — C# Unity Developer building mobile and PC games"}
-      </div>
-    </div>
-  </div>
+  <Section title="Previously">
+    <p className={proseClass}>
+      <a
+        href="https://oozou.com"
+        className={linkClass}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        OOZOU
+      </a>
+      {
+        " (2021—2025) — Lead Mobile Developer, led a team of 6 building React Native, iOS, and Next.js apps"
+      }
+    </p>
+    <p className={proseClass}>
+      <a
+        href="https://www.scb.co.th"
+        className={linkClass}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Siam Commercial Bank
+      </a>
+      {" (2019—2021) — Squad Lead on a banking app with 1M+ daily users"}
+    </p>
+    <p className={proseClass}>
+      <a
+        href="https://www.ringzerogames.com"
+        className={linkClass}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        RingZero Game Studio
+      </a>
+      {" (2018—2019) — C# Unity Developer building mobile and PC games"}
+    </p>
+  </Section>
 );
+
 export default App;
