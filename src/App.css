@@ -13,11 +13,56 @@ body {
   color: #111;
 }
 
+.brand-link {
+  color: var(--brand-light);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-color: var(--brand-light);
+  transition: opacity 0.15s ease;
+}
+
+.brand-link:hover {
+  opacity: 0.8;
+}
+
+.nav-link {
+  color: #111;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-color: #d1d5db;
+  transition:
+    color 0.15s ease,
+    text-decoration-color 0.15s ease;
+}
+
+.nav-link:hover {
+  text-decoration-color: #111;
+}
+
 @media (prefers-color-scheme: dark) {
   html, body {
     background: #111;
   }
   body {
     color: #f3f4f6;
+  }
+
+  .brand-link {
+    color: var(--brand-dark);
+    text-decoration-color: var(--brand-dark);
+  }
+
+  .brand-link:hover {
+    opacity: 0.85;
+  }
+
+  .nav-link {
+    color: #d1d5db;
+    text-decoration-color: #4b5563;
+  }
+
+  .nav-link:hover {
+    color: #f3f4f6;
+    text-decoration-color: #f3f4f6;
   }
 }

@@ -1,11 +1,40 @@
 import "./App.css";
 import { calculateYearsOfExperience } from "./utils/experience";
 
-const linkClass =
-  "underline underline-offset-[0.15em] transition-colors decoration-gray-300 text-[#111] hover:decoration-[#111] dark:decoration-[#4b5563] dark:text-[#d1d5db] dark:hover:text-[#f3f4f6] dark:hover:decoration-[#f3f4f6]";
+/** Contrast-tested accent colours (WCAG AA on white / #111). Light variants from each site's CSS; darker/brighter pairs for dark mode. */
+const BRAND = {
+  ling: { light: "#b45309", dark: "#ff9900" },
+  nomis: { light: "#2563eb", dark: "#60a5fa" },
+  pcpartprices: { light: "#4f46e5", dark: "#818cf8" },
+  oozou: { light: "#c2185b", dark: "#f472b6" },
+  scb: { light: "#7a58bf", dark: "#9b7fd4" },
+  ringzero: { light: "#0e7490", dark: "#00d4ff" },
+} as const;
+
+type BrandColor = (typeof BRAND)[keyof typeof BRAND];
 
 const proseClass =
   "text-[0.95rem] leading-[1.75] text-[#4b5563] dark:text-[#d1d5db]";
+
+type BrandLinkProps = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "color"> & {
+  brand: BrandColor;
+};
+
+const BrandLink = ({ brand, className = "", children, style, ...props }: BrandLinkProps) => (
+  <a
+    {...props}
+    className={`brand-link ${className}`}
+    style={
+      {
+        ...style,
+        "--brand-light": brand.light,
+        "--brand-dark": brand.dark,
+      } as React.CSSProperties
+    }
+  >
+    {children}
+  </a>
+);
 
 function App() {
   const yearsOfExperience = calculateYearsOfExperience();
@@ -26,31 +55,31 @@ function App() {
 
           <p className={proseClass}>
             {"Currently at "}
-            <a href="https://ling-app.com" className={linkClass}>
+            <BrandLink href="https://ling-app.com" brand={BRAND.ling}>
               Ling
-            </a>
+            </BrandLink>
             {" building a language learning app with React Native and Node.js."}
           </p>
 
           <nav className="flex flex-wrap gap-x-5 gap-y-2 pt-1 text-[0.95rem]">
-            <a href="https://github.com/mkdesilva" className={linkClass}>
+            <a href="https://github.com/mkdesilva" className="nav-link">
               GitHub
             </a>
             <a
               href="https://www.linkedin.com/in/mkdesilva/"
-              className={linkClass}
+              className="nav-link"
             >
               LinkedIn
             </a>
             <a
               href="/resume/Michael-De-Silva-Resume.pdf"
-              className={linkClass}
+              className="nav-link"
               target="_blank"
               rel="noopener noreferrer"
             >
               Resume
             </a>
-            <a href="mailto:me@mkdesilva.com" className={linkClass}>
+            <a href="mailto:me@mkdesilva.com" className="nav-link">
               Email
             </a>
           </nav>
@@ -72,7 +101,7 @@ const Section = ({
   children: React.ReactNode;
 }) => (
   <section className="mt-16">
-    <div className="border-t-2 border-[#111] pt-5 dark:border-[#f3f4f6]">
+    <div className="border-t border-gray-200 pt-5 dark:border-gray-700">
       <h2 className="text-base font-semibold">{title}</h2>
       <div className="mt-4 space-y-3">{children}</div>
     </div>
@@ -82,20 +111,20 @@ const Section = ({
 const Projects = () => (
   <Section title="Projects">
     <p className={proseClass}>
-      <a href="/nomis/" className={linkClass}>
+      <BrandLink href="/nomis/" brand={BRAND.nomis}>
         Nomis
-      </a>
+      </BrandLink>
       {" — Budget tracking app for iOS"}
     </p>
     <p className={proseClass}>
-      <a
+      <BrandLink
         href="https://pcpartprices.app"
-        className={linkClass}
+        brand={BRAND.pcpartprices}
         target="_blank"
         rel="noopener noreferrer"
       >
         PC Part Prices
-      </a>
+      </BrandLink>
       {" — Price history for PC components (WIP)"}
     </p>
   </Section>
@@ -160,38 +189,38 @@ const Toolbox = () => (
 const PreviousExperience = () => (
   <Section title="Previously">
     <p className={proseClass}>
-      <a
+      <BrandLink
         href="https://oozou.com"
-        className={linkClass}
+        brand={BRAND.oozou}
         target="_blank"
         rel="noopener noreferrer"
       >
         OOZOU
-      </a>
+      </BrandLink>
       {
         " (2021—2025) — Lead Mobile Developer, led a team of 6 building React Native, iOS, and Next.js apps"
       }
     </p>
     <p className={proseClass}>
-      <a
+      <BrandLink
         href="https://www.scb.co.th"
-        className={linkClass}
+        brand={BRAND.scb}
         target="_blank"
         rel="noopener noreferrer"
       >
         Siam Commercial Bank
-      </a>
+      </BrandLink>
       {" (2019—2021) — Squad Lead on a banking app with 1M+ daily users"}
     </p>
     <p className={proseClass}>
-      <a
+      <BrandLink
         href="https://www.ringzerogames.com"
-        className={linkClass}
+        brand={BRAND.ringzero}
         target="_blank"
         rel="noopener noreferrer"
       >
         RingZero Game Studio
-      </a>
+      </BrandLink>
       {" (2018—2019) — C# Unity Developer building mobile and PC games"}
     </p>
   </Section>
